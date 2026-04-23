@@ -1,0 +1,37 @@
+name: Build DRX API Binary
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Crystal
+        uses: crystal-lang/install-crystal@v1
+        with:
+          crystal: latest
+
+      - name: Install System Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y liblexbor-dev
+
+      - name: Install Shards
+        run: shards install
+
+      - name: Build Binary
+        run: crystal build src/server.cr --release --no-debug -o drx_api
+
+      - name: Upload Binary Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: drx-api-linux-binary
+          path: drx_api
