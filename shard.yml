@@ -26,7 +26,7 @@ dependencies:
 
   # For generating QR Codes natively
   qr_code:
-    github: bitfox/qr_code
+    github: spider-gazelle/qr-code
 
 
   json:
