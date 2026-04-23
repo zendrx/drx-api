@@ -2,10 +2,10 @@ require "crest"
 require "json"
 
 module Api
-  class NewsCached
-    # This is our in-memory storage
    type NewsItem = Hash(String, String | Nil)
    @@cache = [] of NewsItem
+  class NewsCached
+    # This is our in-memory storage
     
     # Getter to let the Kemal route see the cache
     def self.cache
