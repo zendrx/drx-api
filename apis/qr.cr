@@ -13,7 +13,7 @@ require "qr-code"
        }
      rescue e : Exception
       {
-        "success" => "false"
+        "success" => "false",
         "error" => "#{e.message}"
       }
      end 
