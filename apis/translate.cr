@@ -1,37 +1,48 @@
 require "crest"
-  module Api
-   class Translate 
-    def initialize(word : String, from : String, to : String)
-      @word = word
-      @from = from
-      @to = to 
-      start_translating
-    end 
+require "json"
+
+module Api
+  class Translate
+    getter word : String, from : String, to : String
+
+    def initialize(@word : String, @from : String, @to : String)
+    end
+
+    
+    def self.run(word, from, to)
+      new(word, from, to).start_translating
+    end
 
     def start_translating
-      url = "https://lingva.ml/api/v1/#{@from}/#{@to}/#{@word}"
+      encoded_word = URI.encode_path(@word)
+      url = "https://lingva.ml/api/v1/#{@from}/#{@to}/#{encoded_word}"
+
       begin
-       response = Crest.get(url)
-       if response.success?
-        data = JSON.parse(response.body)
-         {
-          "success" => "true",
-          "original_lang" => "#{@from}",
-          "translated_to" => "#{@to}",
-          "translation" => "#{data["translation"]}",
-          "attribution" => "drx_api"
-         } of String => String
-      end 
-     rescue e : Crest:ResquestFailed
-      {
-        "success" => "false"
-        "error" => "#{e.message}"
-     } of String => String
-    end 
-  end 
- end
-end 
-  
-      
-      
-      
+        response = Crest.get(url)
+        
+        if response.success?
+          data = JSON.parse(response.body)
+          return {
+            "success"       => "true",
+            "original_lang" => @from,
+            "translated_to" => @to,
+            "translation"   => data["translation"].as_s,
+            "attribution"   => "drx_api"
+          }
+        end
+        
+        {"success" => "false", "error" => "Unknown error"}
+      rescue e : Crest::RequestFailed 
+        {
+          "success" => "false",
+          "error"   => e.message || "Request failed"
+        }
+      rescue e : Exception # Catch-all for network timeouts, etc.
+        {
+          "success" => "false",
+          "error"   => e.message || "Internal Error"
+        }
+      end
+    end
+  end
+end
