@@ -1,5 +1,5 @@
 module Api
-  class Validator
+  class Validate
     # List of common disposable email domains to block
     DISPOSABLE_DOMAINS = ["mailinator.com", "10minutemail.com", "tempmail.com", "guerrillamail.com"]
 
