@@ -35,7 +35,7 @@ jobs:
         run: shards install
 
       - name: Build Binary
-        run: crystal build src/server.cr --release --no-debug -o drx_api
+        run: crystal build server.cr --release --no-debug -o drx_api
 
       - name: Upload Binary Artifact
         uses: actions/upload-artifact@v4
