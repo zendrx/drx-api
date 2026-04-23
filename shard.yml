@@ -25,7 +25,7 @@ dependencies:
     github: kostya/lexbor
 
   # For generating QR Codes natively
-  qr_code:
+  qr-code:
     github: spider-gazelle/qr-code
 
 license: MIT
