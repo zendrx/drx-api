@@ -4,7 +4,6 @@ module Api
   class StressTest
     def self.run(target_url : String, request_count : String)
 
-      request_count.to_i 
       # Hard cap for safety
       count = request_count > 200 ? 200 : request_count
       
