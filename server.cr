@@ -64,7 +64,7 @@ end
 post "/api/stress-test" do |env|
   env.response.content_type = "application/json"
   url = env.params.json["url"].as(String)
-  count = env.params.json["count"].as(Int32)
+  count = env.params.json["count"].as(String)
   test = Api::StressTest.run(url, count)
   test.to_json
 end
