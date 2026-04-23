@@ -1,0 +1,35 @@
+name: drx_api
+version: 0.1.0
+
+authors:
+  - zendrx <ynwghosted@icloud.com>
+
+targets:
+  drx_api:
+    main: src/drx_api.cr
+
+dependencies:
+  kemal:
+    github: kemalcr/kemal
+  
+  # For HTTP requests (News, Translation, IP Check)
+  crest:
+    github: mamantoha/crest
+
+  # For Markdown to HTML conversion
+  markd:
+    github: icyleaf/markd
+
+  # For high-speed HTML parsing (Scraper, Unfurl)
+  lexbor:
+    github: vladfaust/lexbor
+
+  # For generating QR Codes natively
+  qr_code:
+    github: bitfox/qr_code
+
+
+  json:
+    github: crystal-lang/json
+
+license: MIT
