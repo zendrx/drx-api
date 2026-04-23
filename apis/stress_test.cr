@@ -13,7 +13,7 @@ module Api
       count.times do
         spawn do
           begin
-            response = Crest.get(target_url, timeout: 2.seconds)
+            response = Crest.get(target_url)
             results_channel.send(response.status_code)
           rescue
             results_channel.send(0) # 0 means the server crashed/timed out
