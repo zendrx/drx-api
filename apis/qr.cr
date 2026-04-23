@@ -1,4 +1,4 @@
-require "qr_code"
+require "qr-code"
 
  module Api
   class Qrcode
