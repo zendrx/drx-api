@@ -29,12 +29,56 @@ get "api/news" do
   news.to_json
 end 
 
-get "api/qr" do |env|
-  text = env.params.body["text"].as(String)
+get "api/qr/:text" do |env|
+  text = env.params.url["text"].as(String)
   qr = Api::Qrcode.run(text)
   qr.to_json
 end 
 
+post "/api/scrape" do |env|
+ url = env.params.json["url"].as(String)
+ selector = env.params.json["selector"].as(String)
+ scraped = Api::Scraper.run(url, selector)
+ scraped.to_json
+end 
+
+post "/api/stress-test" do |env|
+ url = env.params.json["url"].as(String)
+ count = env.params.json["count"].as(String)
+ test = Api::StressTest.run(url, count)
+ test.to_json
+end 
+
+post "/api/translate" do |env|
+ word = env.params.json["word"].as(String)
+ to = env.params.json["to"].as(String)
+ from = env.params.json["from"].as(String)
+ translate = Api::Translate.run(word, from, to)
+ translate.to_json
+end 
+
+post "/api/validate/email" do |env|
+ email = env.params.json["email"].as(String)
+ validate = Api::Validate.email(email)
+ validate.to_json
+end 
+
+post "/api/validate/number" do |env|
+ number = env.params.json["number"].as(String)
+ validate = Api::Validate.phone(number)
+ validate.to_json
+end 
+
+kemal.run
+puts "drx started...."
+ 
+
+
+
+
+
+
+ 
 
 
   
