@@ -71,26 +71,3 @@ end
 
 kemal.run
 puts "drx started...."
- 
-
-
-
-
-
-
- 
-
-
-  
-
-
-
-
-
-
-
-  
-  
-  
- 
- 
