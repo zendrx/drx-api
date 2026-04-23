@@ -22,7 +22,7 @@ dependencies:
 
   # For high-speed HTML parsing (Scraper, Unfurl)
   lexbor:
-    github: vladfaust/lexbor
+    github: kostya/lexbor
 
   # For generating QR Codes natively
   qr_code:
