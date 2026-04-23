@@ -28,8 +28,4 @@ dependencies:
   qr_code:
     github: spider-gazelle/qr-code
 
-
-  json:
-    github: crystal-lang/json
-
 license: MIT
