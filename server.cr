@@ -53,13 +53,6 @@ get "/api/qr/:text" do |env|
   qr.to_json
 end
 
-post "/api/scrape" do |env|
-  env.response.content_type = "application/json"
-  url = env.params.json["url"].as(String)
-  selector = env.params.json["selector"].as(String)
-  scraped = Api::Scraper.run(url, selector)
-  scraped.to_json
-end
 
 post "/api/stress-test" do |env|
   env.response.content_type = "application/json"
