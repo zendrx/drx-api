@@ -14,7 +14,7 @@ before_all do |env|
   env.response.headers["Access-Control-Allow-Headers"] = "Content-Type"
 end
 
-options "*" do |env|
+options "/*" do |env|
   env.response.status_code = 200
   ""
 end
