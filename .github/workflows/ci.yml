@@ -19,18 +19,6 @@ jobs:
         with:
           crystal: latest
 
-      - name: Install Build Tools
-        run: sudo apt-get update && sudo apt-get install -y cmake
-
-      - name: Install Lexbor from Source
-        run: |
-          git clone https://github.com/lexbor/lexbor.git
-          cd lexbor
-          cmake . -DLEXBOR_BUILD_STATIC=ON
-          make
-          sudo make install
-          sudo ldconfig
-
       - name: Install Shards
         run: shards install
 
