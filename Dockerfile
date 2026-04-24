@@ -19,6 +19,7 @@ COPY . .
 # Build the app
 # --release: optimizes the binary for speed
 # --static: ensures it runs on the tiny alpine image without needing libraries
+RUN mkdir -p bin
 RUN crystal build server.cr --release --static --no-debug -o bin/server
 
 # --- Phase 2: Execution ---
