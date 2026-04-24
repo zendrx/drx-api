@@ -111,7 +111,7 @@ Generate a QR code from text.
 - **Example:** `/api/qr/Hello%20World`
 - **Response:** QR code data as JSON
 
-#### 6. Web Scraper
+#### 6. Web Scraper **removed no longer available**
 Scrape content from a webpage using a CSS selector.
 
 - **URL:** `/api/scrape`
