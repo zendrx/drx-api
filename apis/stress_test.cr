@@ -2,10 +2,10 @@ require "crest"
 
 module Api
   class StressTest
-    def self.run(target_url : String, request_count : String)
+    def self.run(target_url : String)
 
       # Hard cap for safety
-      count = request_count > 200 ? 200 : request_count
+     count = 100
       
       results_channel = Channel(Int32).new
       start_time = Time.monotonic
