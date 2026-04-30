@@ -23,7 +23,7 @@ module Api
 
         # 4. The Janitor (Deletes the file in 5 minutes)
         spawn do
-          sleep 5.minutes
+          sleep 10.minutes
           File.delete(filepath) if File.exists?(filepath)
         end
 
@@ -31,7 +31,7 @@ module Api
           "success"     => "true",
           "url"         => "/temp/img/#{filename}", # Public URL for the browser
           "size"        => "#{img_bytes.size} bytes",
-          "message"     => "will be deleted in 5 mins",
+          "message"     => "will be deleted in 10 mins",
           "attribution" => "drx_api"
         }
       rescue e : Exception
