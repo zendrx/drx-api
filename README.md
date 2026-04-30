@@ -19,27 +19,13 @@
 
 ## 🛠 Installation & Setup
 
-### Prerequisites
-You need the **Lexbor** library installed on your system:
-```bash
-# Ubuntu/Debian
-git clone [https://github.com/lexbor/lexbor.git](https://github.com/lexbor/lexbor.git)
-cd lexbor && cmake . && make && sudo make install
-```
-Running Locally
- - clone the repo
-    git clone https://github.com/zendrx/drx-api
- - install shard
-   shard install
-- run
-  crystal server.cr
 
-Here's a README for the API endpoints section based on your code:
 
 ## API Endpoints
 
 ### Base URL
-All endpoints are relative to your server's base URL (default: `http://localhost:3000`)
+All endpoints are relative to your server's base URL (default: `https://zen-drx-api.onrender.com`)
+docs => `https://zendrx-api-docs.netlify.app`
 
 ### Authentication
 No authentication required for these endpoints.
